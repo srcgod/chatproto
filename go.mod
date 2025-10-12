@@ -1,4 +1,4 @@
-module github.com/srcgod/profileproto
+module github.com/srcgod/chatproto
 
 go 1.24.1
 
