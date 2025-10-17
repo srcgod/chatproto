@@ -211,7 +211,16 @@ func (m *Message) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	// no validation rules for ChatId
+	if len(m.GetChatId()) != 16 {
+		err := MessageValidationError{
+			field:  "ChatId",
+			reason: "value length must be 16 bytes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if all {
 		switch v := interface{}(m.GetTimestamp()).(type) {
@@ -341,7 +350,16 @@ func (m *GetMessagesRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for ChatId
+	if len(m.GetChatId()) != 16 {
+		err := GetMessagesRequestValidationError{
+			field:  "ChatId",
+			reason: "value length must be 16 bytes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if m.GetPage() <= 0 {
 		err := GetMessagesRequestValidationError{

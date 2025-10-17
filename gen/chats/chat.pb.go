@@ -90,7 +90,7 @@ type Message struct {
 	Content       string                 `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
 	SenderId      int64                  `protobuf:"varint,3,opt,name=sender_id,json=senderId,proto3" json:"sender_id,omitempty"`
 	ReceiverId    int64                  `protobuf:"varint,4,opt,name=receiver_id,json=receiverId,proto3" json:"receiver_id,omitempty"`
-	ChatId        string                 `protobuf:"bytes,5,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
+	ChatId        []byte                 `protobuf:"bytes,5,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"` // UUID as bytes (16 bytes)
 	Timestamp     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -154,11 +154,11 @@ func (x *Message) GetReceiverId() int64 {
 	return 0
 }
 
-func (x *Message) GetChatId() string {
+func (x *Message) GetChatId() []byte {
 	if x != nil {
 		return x.ChatId
 	}
-	return ""
+	return nil
 }
 
 func (x *Message) GetTimestamp() *timestamppb.Timestamp {
@@ -170,7 +170,7 @@ func (x *Message) GetTimestamp() *timestamppb.Timestamp {
 
 type GetMessagesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ChatId        string                 `protobuf:"bytes,1,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
+	ChatId        []byte                 `protobuf:"bytes,1,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"` // UUID as bytes (16 bytes)
 	Page          int32                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
 	PageSize      int32                  `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -207,11 +207,11 @@ func (*GetMessagesRequest) Descriptor() ([]byte, []int) {
 	return file_chat_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *GetMessagesRequest) GetChatId() string {
+func (x *GetMessagesRequest) GetChatId() []byte {
 	if x != nil {
 		return x.ChatId
 	}
-	return ""
+	return nil
 }
 
 func (x *GetMessagesRequest) GetPage() int32 {
@@ -281,17 +281,17 @@ const file_chat_proto_rawDesc = "" +
 	"\x04Chat\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\x04name\x18\x02 \x01(\tB\t\xfaB\x06r\x04\x10\x03\x182R\x04name\x12\x19\n" +
-	"\buser_ids\x18\x03 \x03(\tR\auserIds\"\xea\x01\n" +
+	"\buser_ids\x18\x03 \x03(\tR\auserIds\"\xf3\x01\n" +
 	"\aMessage\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\x03B\a\xfaB\x04\"\x02 \x00R\x02id\x12#\n" +
 	"\acontent\x18\x02 \x01(\tB\t\xfaB\x06r\x04\x10\x03\x182R\acontent\x12$\n" +
 	"\tsender_id\x18\x03 \x01(\x03B\a\xfaB\x04\"\x02 \x00R\bsenderId\x12(\n" +
 	"\vreceiver_id\x18\x04 \x01(\x03B\a\xfaB\x04\"\x02 \x00R\n" +
-	"receiverId\x12\x17\n" +
-	"\achat_id\x18\x05 \x01(\tR\x06chatId\x128\n" +
-	"\ttimestamp\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\"p\n" +
-	"\x12GetMessagesRequest\x12\x17\n" +
-	"\achat_id\x18\x01 \x01(\tR\x06chatId\x12\x1b\n" +
+	"receiverId\x12 \n" +
+	"\achat_id\x18\x05 \x01(\fB\a\xfaB\x04z\x02h\x10R\x06chatId\x128\n" +
+	"\ttimestamp\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\"y\n" +
+	"\x12GetMessagesRequest\x12 \n" +
+	"\achat_id\x18\x01 \x01(\fB\a\xfaB\x04z\x02h\x10R\x06chatId\x12\x1b\n" +
 	"\x04page\x18\x02 \x01(\x05B\a\xfaB\x04\x1a\x02 \x00R\x04page\x12$\n" +
 	"\tpage_size\x18\x03 \x01(\x05B\a\xfaB\x04\x1a\x02 \x00R\bpageSize\"D\n" +
 	"\x13GetMessagesResponse\x12-\n" +
