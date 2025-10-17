@@ -30,7 +30,7 @@ message Message {
 }
 
 message GetMessagesRequest {
-  bytes chat_id = 1 ; 
+  string chat_id = 1 ; 
   int32 page = 2 [ (validate.rules).int32 = {gt : 0} ];
   int32 page_size = 3 [ (validate.rules).int32 = {gt : 0} ];
 }
