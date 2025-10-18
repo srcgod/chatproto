@@ -12,7 +12,17 @@ option go_package = "oneway/chat/v1;chatv1";
 
 service ChatService {
   rpc GetMessages(GetMessagesRequest) returns (GetMessagesResponse);
+  rpc CreateChat(CreateChatRequest) returns (CreateChatResponse);
 }
+
+message CreateChatRequest {
+  repeated int64 users = 1;
+}
+
+message CreateChatResponse {
+  string chat_id = 1;
+}
+
 
 message Chat {
   string id = 1 ;
