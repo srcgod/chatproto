@@ -852,6 +852,12 @@ func (m *GetChatsByUserIDResponse) validate(all bool) error {
 
 	}
 
+	// no validation rules for ChatType
+
+	if m.Name != nil {
+		// no validation rules for Name
+	}
+
 	if len(errors) > 0 {
 		return GetChatsByUserIDResponseMultiError(errors)
 	}

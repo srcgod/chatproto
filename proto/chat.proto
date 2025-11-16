@@ -45,6 +45,8 @@ message GetChatByUserIDRequest {
 }
 message GetChatsByUserIDResponse {
   repeated Chat chats = 1;
+  string chat_type = 2;
+  optional string name = 3;
 }
 
 message Chat {
