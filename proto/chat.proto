@@ -45,12 +45,11 @@ message GetChatByUserIDRequest {
 }
 message GetChatsByUserIDResponse {
   repeated Chat chats = 1;
-  string chat_type = 2;
-  optional string name = 3;
 }
 
 message Chat {
   repeated int64 user_ids = 1;
   string chat_id = 2;
-  string name = 3;
+  optional string name = 3;
+  string chat_type = 4;
 }
