@@ -163,8 +163,8 @@ func (m *UpdateChatRequest) validate(all bool) error {
 
 	// no validation rules for ChatId
 
-	if m.Name != nil {
-		// no validation rules for Name
+	if m.ChatName != nil {
+		// no validation rules for ChatName
 	}
 
 	if len(errors) > 0 {
@@ -504,8 +504,8 @@ func (m *CreateChatRequest) validate(all bool) error {
 
 	var errors []error
 
-	if m.Name != nil {
-		// no validation rules for Name
+	if m.ChatName != nil {
+		// no validation rules for ChatName
 	}
 
 	if len(errors) > 0 {
@@ -957,8 +957,8 @@ func (m *Chat) validate(all bool) error {
 
 	// no validation rules for ChatType
 
-	if m.Name != nil {
-		// no validation rules for Name
+	if m.ChatName != nil {
+		// no validation rules for ChatName
 	}
 
 	if len(errors) > 0 {
