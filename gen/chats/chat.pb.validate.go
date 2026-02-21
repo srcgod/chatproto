@@ -504,9 +504,7 @@ func (m *CreateChatRequest) validate(all bool) error {
 
 	var errors []error
 
-	if m.ChatName != nil {
-		// no validation rules for ChatName
-	}
+	// no validation rules for ChatName
 
 	if len(errors) > 0 {
 		return CreateChatRequestMultiError(errors)
