@@ -163,9 +163,7 @@ func (m *UpdateChatRequest) validate(all bool) error {
 
 	// no validation rules for ChatId
 
-	if m.ChatName != nil {
-		// no validation rules for ChatName
-	}
+	// no validation rules for ChatName
 
 	if len(errors) > 0 {
 		return UpdateChatRequestMultiError(errors)
@@ -953,11 +951,9 @@ func (m *Chat) validate(all bool) error {
 
 	// no validation rules for ChatId
 
-	// no validation rules for ChatType
+	// no validation rules for ChatName
 
-	if m.ChatName != nil {
-		// no validation rules for ChatName
-	}
+	// no validation rules for ChatType
 
 	if len(errors) > 0 {
 		return ChatMultiError(errors)

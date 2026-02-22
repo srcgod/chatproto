@@ -19,7 +19,7 @@ message DeleteChatRequest {
 
 message UpdateChatRequest {
   string chat_id  = 1;
-  optional string chat_name = 2;
+  string chat_name = 2;
 }
 
 message UpdateChatResponse {
@@ -50,6 +50,6 @@ message GetChatsByUserIDResponse {
 message Chat {
   repeated int64 user_ids = 1;
   string chat_id = 2;
-  optional string chat_name = 3;
+  string chat_name = 3;
   string chat_type = 4;
 }

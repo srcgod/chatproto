@@ -68,7 +68,7 @@ func (x *DeleteChatRequest) GetChatId() string {
 type UpdateChatRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ChatId        string                 `protobuf:"bytes,1,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
-	ChatName      *string                `protobuf:"bytes,2,opt,name=chat_name,json=chatName,proto3,oneof" json:"chat_name,omitempty"`
+	ChatName      string                 `protobuf:"bytes,2,opt,name=chat_name,json=chatName,proto3" json:"chat_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -111,8 +111,8 @@ func (x *UpdateChatRequest) GetChatId() string {
 }
 
 func (x *UpdateChatRequest) GetChatName() string {
-	if x != nil && x.ChatName != nil {
-		return *x.ChatName
+	if x != nil {
+		return x.ChatName
 	}
 	return ""
 }
@@ -401,7 +401,7 @@ type Chat struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserIds       []int64                `protobuf:"varint,1,rep,packed,name=user_ids,json=userIds,proto3" json:"user_ids,omitempty"`
 	ChatId        string                 `protobuf:"bytes,2,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
-	ChatName      *string                `protobuf:"bytes,3,opt,name=chat_name,json=chatName,proto3,oneof" json:"chat_name,omitempty"`
+	ChatName      string                 `protobuf:"bytes,3,opt,name=chat_name,json=chatName,proto3" json:"chat_name,omitempty"`
 	ChatType      string                 `protobuf:"bytes,4,opt,name=chat_type,json=chatType,proto3" json:"chat_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -452,8 +452,8 @@ func (x *Chat) GetChatId() string {
 }
 
 func (x *Chat) GetChatName() string {
-	if x != nil && x.ChatName != nil {
-		return *x.ChatName
+	if x != nil {
+		return x.ChatName
 	}
 	return ""
 }
@@ -472,12 +472,10 @@ const file_chat_proto_rawDesc = "" +
 	"\n" +
 	"chat.proto\x12\x04chat\",\n" +
 	"\x11DeleteChatRequest\x12\x17\n" +
-	"\achat_id\x18\x01 \x01(\tR\x06chatId\"\\\n" +
+	"\achat_id\x18\x01 \x01(\tR\x06chatId\"I\n" +
 	"\x11UpdateChatRequest\x12\x17\n" +
-	"\achat_id\x18\x01 \x01(\tR\x06chatId\x12 \n" +
-	"\tchat_name\x18\x02 \x01(\tH\x00R\bchatName\x88\x01\x01B\f\n" +
-	"\n" +
-	"_chat_name\"4\n" +
+	"\achat_id\x18\x01 \x01(\tR\x06chatId\x12\x1b\n" +
+	"\tchat_name\x18\x02 \x01(\tR\bchatName\"4\n" +
 	"\x12UpdateChatResponse\x12\x1e\n" +
 	"\x04chat\x18\x01 \x01(\v2\n" +
 	".chat.ChatR\x04chat\"3\n" +
@@ -494,14 +492,12 @@ const file_chat_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"<\n" +
 	"\x18GetChatsByUserIDResponse\x12 \n" +
 	"\x05chats\x18\x01 \x03(\v2\n" +
-	".chat.ChatR\x05chats\"\x87\x01\n" +
+	".chat.ChatR\x05chats\"t\n" +
 	"\x04Chat\x12\x19\n" +
 	"\buser_ids\x18\x01 \x03(\x03R\auserIds\x12\x17\n" +
-	"\achat_id\x18\x02 \x01(\tR\x06chatId\x12 \n" +
-	"\tchat_name\x18\x03 \x01(\tH\x00R\bchatName\x88\x01\x01\x12\x1b\n" +
-	"\tchat_type\x18\x04 \x01(\tR\bchatTypeB\f\n" +
-	"\n" +
-	"_chat_name2\xe1\x01\n" +
+	"\achat_id\x18\x02 \x01(\tR\x06chatId\x12\x1b\n" +
+	"\tchat_name\x18\x03 \x01(\tR\bchatName\x12\x1b\n" +
+	"\tchat_type\x18\x04 \x01(\tR\bchatType2\xe1\x01\n" +
 	"\vChatService\x12?\n" +
 	"\n" +
 	"CreateChat\x12\x17.chat.CreateChatRequest\x1a\x18.chat.CreateChatResponse\x12P\n" +
@@ -554,8 +550,6 @@ func file_chat_proto_init() {
 	if File_chat_proto != nil {
 		return
 	}
-	file_chat_proto_msgTypes[1].OneofWrappers = []any{}
-	file_chat_proto_msgTypes[8].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
